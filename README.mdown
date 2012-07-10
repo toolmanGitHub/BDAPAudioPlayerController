@@ -1,0 +1,69 @@
+BDAPAudioPlayerController and BDAPAudioPlayer
+==============================================
+
+This project demonstrates the use of the BDAPAudioPlayer and BDAPAudioPlayerController.  The BDAPAudioPlayer is a subclass that adds fading functionality the Apple's AVAudioPlayer.  The fading coding is developed from [Peter Goodliffe's example](http://goodliffe.blogspot.com/2011/04/ios-fading-avaudioplayer.html).
+
+The BDAPAudioPlayerController is a programatic interface to the BDAPAudioPlayer which acts as the AVAudioPlayer's delegate and allows you to manage a playlist of audio tracks.
+
+The sample project contains a simple subclass of a UIViewController that has a few track playing UIButtons which demonstrate the functionality.  Usage is simple, add BDAPAudioPlayerController.h to your project.  Then  alloc/init with a URL or an NSArray of URL's to some audio tracks.  It's as simple as this:
+
+    - (IBAction)play:(id)sender {
+        [self.audioPlayerController play];
+    }
+    -(BDAPAudioPlayerController *)audioPlayerController{
+        if (audioPlayerController_) {
+            return audioPlayerController_;
+        }
+    
+        NSArray *musicURLs=[NSArray arrayWithObjects:[[NSBundle mainBundle] URLForResource:@"02 BU2B" withExtension:@"m4a"],[[NSBundle mainBundle] URLForResource:@"01 Paper Airplane" withExtension:@"m4a"],nil];
+        audioPlayerController_=[[BDAPAudioPlayerController alloc] initWithURLs:musicURLs];
+    
+        return audioPlayerController_;
+    }
+    
+
+History
+-------
+### Version 1
+
+First Release
+
+
+License
+-------
+
+The below license is the new BSD license with the OSI recommended personalizations.
+ <http://www.opensource.org/licenses/bsd-license.php>
+ 
+ Copyright (C) 2012 Big Diggy SW. All Rights Reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+ 
+ * Redistributions of source code must retain the above copyright notice,
+ this list of conditions and the following disclaimer.
+ 
+ * Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ 
+ * Neither the name of Tim Taylor nor Big Diggy SW 
+ may be used to endorse or promote products derived from this software
+ without specific prior written permission.
+ 
+ THIS SOFTWARE IS PROVIDED BY Big Diggy SW "AS IS" AND ANY
+ EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+    
